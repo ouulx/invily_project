@@ -2,10 +2,10 @@
 import { ref } from "vue"; // <--- [BARU] Wajib import 'ref' buat bikin status buka/tutup
 import { useRoute } from "vue-router";
 import { clients } from "../data/clients.js";
-import Counter from "../components/Counter.vue/index.js";
-import Amplop from "../components/Amplop.vue/index.js";
-import formRSVP from "../components/formRSVP.vue/index.js";
-import MusicButton from "../components/MusicButton.vue/index.js"; // <--- [BARU] Import tombol musiknya
+import Counter from "../components/Counter.vue";
+import Amplop from "../components/Amplop.vue";
+import formRSVP from "../components/formRSVP.vue";
+import MusicButton from "../components/MusicButton.vue"; // <--- [BARU] Import tombol musiknya
 
 const route = useRoute();
 const data = clients[route.params.slug];
