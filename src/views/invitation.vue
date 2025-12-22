@@ -2,10 +2,10 @@
 import { ref } from "vue"; // <--- [BARU] Wajib import 'ref' buat bikin status buka/tutup
 import { useRoute } from "vue-router";
 import { clients } from "../data/clients.js";
-import Countdown from "../components/Countdown.vue";
-import gift from "../components/gift.vue";
-import rsvp from "../components/rsvp.vue";
-import AudioButton from "../components/AudioButton.vue"; // <--- [BARU] Import tombol musiknya
+import Counter from "../components/Counter.vue/index.js";
+import Amplop from "../components/Amplop.vue/index.js";
+import formRSVP from "../components/formRSVP.vue/index.js";
+import MusicButton from "../components/MusicButton.vue/index.js"; // <--- [BARU] Import tombol musiknya
 
 const route = useRoute();
 const data = clients[route.params.slug];
@@ -24,7 +24,7 @@ const bukaUndangan = () => {
     <div
       class="w-full max-w-[480px] bg-white min-h-screen shadow-2xl relative overflow-hidden font-serif text-gray-800 pb-20"
     >
-      <AudioButton :file="data.musik" :autoPlay="isOpened" />
+      <MusicButton :file="data.musik" :autoPlay="isOpened" />
 
       <section
         class="h-screen flex flex-col justify-center items-center text-center p-6 relative bg-pink-50"
@@ -63,15 +63,15 @@ const bukaUndangan = () => {
       <div v-if="isOpened" class="animate-fade-in transition-all duration-1000">
         <div class="text-center mt-10 p-5">
           <h2 class="text-2xl font-bold mb-4 text-gray-700">Hitung Mundur</h2>
-          <Countdown :target="data.waktu" />
+          <Counter :target="data.waktu" />
         </div>
 
         <hr class="border-gray-200 my-5 mx-10" />
 
-        <gift :items="data.amplop" />
+        <Amplop :items="data.amplop" />
         <hr class="border-gray-200 my-5 mx-10" />
 
-        <rsvp :noWa="data.noHp" />
+        <formRSVP :noWa="data.noHp" />
         <div
           class="h-40 bg-pink-50 m-5 rounded flex items-center justify-center text-gray-400"
         >
